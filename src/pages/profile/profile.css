@@ -1,0 +1,232 @@
+/* .profile {
+    min-height: 100vh;
+    background: url(/background.png) no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.profile-container {
+    min-width: 700px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+}
+
+.profile-pic {
+    max-width: 160px;
+    aspect-ratio: 1/1;
+    margin: 20px auto;
+    border-radius: 50%;
+}
+
+.profile form {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    gap:20px;
+}
+.profile form h3 {
+    font-weight: 500;
+}
+.profile label{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: grey;
+    cursor: pointer;
+}
+.profile label img{
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.profile input,textarea{
+    padding: 10px;
+    min-width: 300px;
+    border-radius: 5px;
+    border: 1px solid #c9c9c9;
+    outline-color: #077eff;
+}
+
+.profile form button{
+    border: none;
+    color: white;
+    background-color: #077eff;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
+.avatar-main {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-list {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.avatar-option {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 2px solid transparent;
+}
+
+.avatar-option:hover {
+  transform: scale(1.1);
+}
+
+.avatar-selected {
+  border: 2px solid #2563eb;
+} */
+
+
+
+.profile {
+    min-height: 100vh;
+    background: url(/background.png) no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container */
+.profile-container {
+    min-width: 700px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+}
+
+/* 🔥 Avatar section center fix */
+.avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* BIG avatar (FIXED SIZE) */
+.avatar-main {
+    width: 150px;              /* 🔥 increased size */
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;         /* 🔥 prevents stretch */
+    margin: 20px auto;
+    display: block;
+}
+
+/* Small avatars row */
+.avatar-list {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* Small avatars */
+.avatar-option {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 2px solid transparent;
+    object-fit: cover;
+}
+
+.avatar-option:hover {
+    transform: scale(1.1);
+}
+
+/* Selected avatar */
+.avatar-selected {
+    border: 2px solid #2563eb;
+}
+
+/* Form styling */
+.profile form {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    gap: 20px;
+}
+
+.profile form h3 {
+    font-weight: 500;
+    text-align: center;  /* 🔥 center title */
+}
+
+/* Inputs */
+.profile input,
+.profile textarea {
+    padding: 10px;
+    min-width: 300px;
+    border-radius: 5px;
+    border: 1px solid #c9c9c9;
+    outline-color: #077eff;
+}
+
+/* Button */
+.profile form button {
+    border: none;
+    color: white;
+    background-color: #077eff;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.profile form button:hover {
+    background-color: #0566d3; /* 🔥 hover effect */
+}
+
+.avatar-main {
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+   
+    object-fit: cover;
+    object-position: top; /* try: center / top / 40% 30% */
+
+}
+.profile-pic {
+ position: absolute;
+  top: 15px;
+  left: 15px;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  /* background: #1e88e5;
+  color: white; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  /* box-shadow: 0 4px 10px rgba(0,0,0,0.2); */
+}

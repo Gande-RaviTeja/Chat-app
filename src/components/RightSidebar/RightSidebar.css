@@ -1,0 +1,344 @@
+/* ── ROOT ── */
+.rs {
+  color: white;
+  background: #001030;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.rs::-webkit-scrollbar { display: none; }
+
+/* ══════════════════════
+   TOP — Contact info
+══════════════════════ */
+.rs-contact {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 20px 16px;
+  gap: 6px;
+  text-align: center;
+  position: relative;
+}
+
+.rs-contact::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, rgba(7,126,255,0.13) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.rs-avatar-wrap { position: relative; }
+
+.rs-avatar {
+  width: 110px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #077eff;
+  box-shadow: 0 0 0 5px rgba(7,126,255,0.15);
+  display: block;
+}
+
+.rs-online-dot {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 14px;
+  height: 14px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 2px solid #001030;
+}
+
+.rs-contact-name {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 6px 0 0;
+  color: #fff;
+}
+
+.rs-contact-bio {
+  font-size: 11px;
+  opacity: 0.7;
+  font-weight: 300;
+  margin: 0;
+  max-width: 180px;
+  line-height: 1.5;
+}
+
+.rs-contact-email {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 100%;
+  margin-top: 2px;
+  text-align: left;
+}
+
+.rs-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.rs-value {
+  font-size: 12px;
+  color: #b0c8f0;
+  word-break: break-all;
+}
+
+/* ✅ Remove Friend button */
+.rs-remove-btn {
+  width: 100%;
+  padding: 8px;
+  background: transparent;
+  color: #f87171;
+  border: 1px solid rgba(248,113,113,0.35);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 2px;
+  transition: all 0.2s;
+}
+
+.rs-remove-btn:hover {
+  background: rgba(248,113,113,0.12);
+  border-color: #f87171;
+  color: #fff;
+}
+
+/* ✅ Confirm box */
+.rs-confirm-box {
+  width: 100%;
+  background: rgba(248,113,113,0.08);
+  border: 1px solid rgba(248,113,113,0.25);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rs-confirm-text {
+  font-size: 12px;
+  color: #fca5a5;
+  margin: 0;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.rs-confirm-text strong {
+  color: #fff;
+}
+
+.rs-confirm-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.rs-confirm-cancel {
+  flex: 1;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #9ab;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.rs-confirm-cancel:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.rs-confirm-yes {
+  flex: 1;
+  padding: 8px;
+  background: #dc2626;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.rs-confirm-yes:hover {
+  background: #b91c1c;
+}
+
+.rs-confirm-yes:disabled,
+.rs-confirm-cancel:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Empty state */
+.rs-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.35;
+}
+.rs-empty span { font-size: 38px; }
+.rs-empty p { font-size: 12px; color: #7aa3d4; margin: 0; }
+
+/* ── DIVIDER ── */
+.rs hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 0 20px;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════
+   BOTTOM — My account
+══════════════════════ */
+.rs-account {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 20px 22px;
+  gap: 10px;
+}
+
+.rs-section-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #3b6ca8;
+  font-weight: 600;
+  align-self: flex-start;
+  margin: 0;
+}
+
+.rs-me-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.rs-me-avatar-wrap { position: relative; flex-shrink: 0; }
+
+.rs-me-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #077eff;
+  display: block;
+}
+
+.rs-me-dot {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 11px;
+  height: 11px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 2px solid #001030;
+}
+
+.rs-me-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.rs-me-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rs-me-email {
+  font-size: 11px;
+  color: #3b82f6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rs-me-bio {
+  font-size: 11px;
+  color: #7aa3d4;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rs-edit-btn {
+  width: 100%;
+  padding: 9px;
+  background: transparent;
+  color: #7ab3f5;
+  border: 1px solid rgba(7,126,255,0.3);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  transition: all 0.2s;
+}
+
+.rs-edit-btn:hover {
+  background: rgba(7,126,255,0.12);
+  color: #fff;
+  border-color: #077eff;
+}
+
+.rs-logout-btn {
+  width: 100%;
+  padding: 10px 65px;
+  background: #077eff;
+  color: white;
+  border: none;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 10px rgba(7,126,255,0.35);
+  white-space: nowrap;
+}
+
+.rs-logout-btn:hover {
+  background: #0569d6;
+  box-shadow: 0 4px 16px rgba(7,126,255,0.5);
+  transform: translateY(-1px);
+}
