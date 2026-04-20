@@ -8,6 +8,7 @@ import {
 } from "firebase/firestore";
 import { db, auth } from "../config/firebase.js";
 import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth"; // ✅ make sure this is imported
 
 export const AppContext = createContext();
 
@@ -24,6 +25,22 @@ const AppContextProvider = ({ children }) => {
 
   // ✅ useCallback prevents new function reference on every render
   // This stops App.jsx useEffect from firing repeatedly
+
+
+  const logout = useCallback(async () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    setUserData(null);
+    setChatData([]);
+    setMessagesId(null);
+    setMessages([]);
+    setChatUser(null);
+    await signOut(auth);
+    navigate("/");
+}, [navigate]);
+
   const loadUserData = useCallback(async (uid) => {
     try {
       const userRef = doc(db, "users", uid);
@@ -124,6 +141,7 @@ const AppContextProvider = ({ children }) => {
     setMessagesId,
     chatUser,
     setChatUser,
+    logout,
   };
 
   return (

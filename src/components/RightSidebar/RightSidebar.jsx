@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import "./RightSidebar.css"
-import { logout } from '../../config/firebase.js';
 import { AppContext } from '../../context/AppContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
@@ -13,19 +12,15 @@ const getAvatar = (user) =>
     : `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.username || "U")}&background=077eff&color=fff`;
 
 const RightSidebar = () => {
-  const { chatUser, setChatUser, userData, setUserData, setChatData, setMessagesId } = useContext(AppContext);
+  const { chatUser, setChatUser, userData, logout, setMessagesId } = useContext(AppContext);
   const navigate = useNavigate();
   const [showConfirm, setShowConfirm] = useState(false);
   const [removing, setRemoving] = useState(false);
 
   const handleLogout = async () => {
     await logout();
-    setUserData(null);
-    setChatData([]);
-    navigate('/');
   };
 
-  // ✅ Remove friend: delete chat entry from both users' chatsData
   const handleRemoveFriend = async () => {
     if (!chatUser || !userData) return;
     setRemoving(true);
@@ -34,7 +29,6 @@ const RightSidebar = () => {
       const myChatsRef = doc(db, "chats", userData.id);
       const theirChatsRef = doc(db, "chats", chatUser.rId);
 
-      // Remove from my chatsData
       const mySnap = await getDoc(myChatsRef);
       if (mySnap.exists()) {
         const filtered = mySnap.data().chatsData.filter(
@@ -43,7 +37,6 @@ const RightSidebar = () => {
         await updateDoc(myChatsRef, { chatsData: filtered });
       }
 
-      // Remove from their chatsData
       const theirSnap = await getDoc(theirChatsRef);
       if (theirSnap.exists()) {
         const filtered = theirSnap.data().chatsData.filter(
@@ -52,7 +45,6 @@ const RightSidebar = () => {
         await updateDoc(theirChatsRef, { chatsData: filtered });
       }
 
-      // Clear active chat from UI
       setChatUser(null);
       setMessagesId(null);
       setShowConfirm(false);
@@ -68,7 +60,6 @@ const RightSidebar = () => {
   return (
     <div className="rs">
 
-      {/* ── TOP: Chat contact ── */}
       <div className="rs-contact">
         {chatUser ? (
           <>
@@ -85,10 +76,9 @@ const RightSidebar = () => {
               <span className="rs-value">{chatUser.userData?.email || "—"}</span>
             </div>
 
-            {/* ✅ Remove Friend button */}
             {!showConfirm ? (
               <button className="rs-remove-btn" onClick={() => setShowConfirm(true)}>
-                 Remove Friend
+                Remove Friend
               </button>
             ) : (
               <div className="rs-confirm-box">
@@ -125,7 +115,6 @@ const RightSidebar = () => {
 
       <hr />
 
-      {/* ── BOTTOM: My account ── */}
       <div className="rs-account">
         <p className="rs-section-label">Your Account</p>
 
@@ -146,7 +135,7 @@ const RightSidebar = () => {
         </button>
 
         <button className="rs-logout-btn" onClick={handleLogout}>
-           Logout
+          Logout
         </button>
       </div>
 

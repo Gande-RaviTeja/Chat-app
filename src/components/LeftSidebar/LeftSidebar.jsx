@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./LeftSidebar.css";
 import assets from "../../assets/assets.js";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { db, logout } from "../../config/firebase.js";
+import { db } from "../../config/firebase.js";
 import { AppContext } from "../../context/AppContext.jsx";
 import { toast } from "react-toastify";
 
@@ -31,9 +31,8 @@ const LeftSidebar = () => {
     chatData,
     setChatUser,
     setMessagesId,
-    setUserData,
-    setChatData,
     messagesId,
+    logout, // ✅ from context
   } = useContext(AppContext);
 
   const [search, setSearch] = useState("");
@@ -44,10 +43,7 @@ const LeftSidebar = () => {
 
   const handleLogout = async () => {
     try {
-      await logout();
-      setUserData(null);
-      setChatData([]);
-      navigate("/");
+      await logout(); // ✅ clears ALL state + navigates
     } catch (error) {
       toast.error(error.message);
     }
@@ -65,7 +61,6 @@ const LeftSidebar = () => {
     setFriendEmail("");
   };
 
-  // Search Firestore by email
   const searchByEmail = async () => {
     const email = friendEmail.trim().toLowerCase();
     if (!email) return toast.error("Enter an email address");
@@ -145,7 +140,7 @@ const LeftSidebar = () => {
       toast.info("Already in your chats!");
     } else {
       await createChat(foundUser);
-      toast.success(`${foundUser.username} added! 🎉`);
+      toast.success(`${foundUser.username} added! `);
     }
 
     closeModal();
@@ -180,7 +175,6 @@ const LeftSidebar = () => {
 
   const safeChatData = Array.isArray(chatData) ? chatData : [];
 
-  // Deduplicate by rId
   const dedupedChatData = safeChatData.reduce((acc, chat) => {
     const existing = acc.find((c) => c.rId === chat.rId);
     if (!existing) {
@@ -201,7 +195,6 @@ const LeftSidebar = () => {
   return (
     <div className="ls">
 
-      {/* TOP */}
       <div className="ls-top">
         <div className="ls-nav">
           <img src={assets.logo} alt="" className="logo" />
@@ -231,7 +224,6 @@ const LeftSidebar = () => {
         </button>
       </div>
 
-      {/* CHAT LIST */}
       <div className="ls-list">
         {filteredChats.length === 0 ? (
           <p className="ls-empty">
@@ -260,7 +252,6 @@ const LeftSidebar = () => {
         )}
       </div>
 
-      {/* ADD FRIEND MODAL */}
       {showAddFriend && (
         <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && closeModal()}>
           <div className="modal-box">
