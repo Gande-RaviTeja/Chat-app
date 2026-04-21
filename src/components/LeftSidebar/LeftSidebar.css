@@ -17,9 +17,7 @@
   justify-content: space-between;
 }
 
-.ls-nav .logo {
-  max-width: 140px;
-}
+.ls-nav .logo { max-width: 140px; }
 
 .ls-nav .menu img {
   max-height: 20px;
@@ -37,9 +35,7 @@
   border-radius: 8px;
 }
 
-.ls-search img {
-  max-width: 16px;
-}
+.ls-search img { max-width: 16px; }
 
 .ls-search .search-input {
   background-color: transparent;
@@ -50,7 +46,6 @@
   width: 100%;
 }
 
-/* ✅ Add Friend Button */
 .add-friend-btn {
   margin-top: 12px;
   width: 100%;
@@ -70,11 +65,8 @@
   transition: background 0.2s;
 }
 
-.add-friend-btn:hover {
-  background: #1446c0;
-}
+.add-friend-btn:hover { background: #1446c0; }
 
-/* Chat list */
 .ls-list {
   display: flex;
   flex-direction: column;
@@ -82,14 +74,8 @@
   overflow-y: scroll;
 }
 
-.ls-list::-webkit-scrollbar {
-  width: 3px;
-}
-
-.ls-list::-webkit-scrollbar-thumb {
-  background: #1a3a7a;
-  border-radius: 3px;
-}
+.ls-list::-webkit-scrollbar { width: 3px; }
+.ls-list::-webkit-scrollbar-thumb { background: #1a3a7a; border-radius: 3px; }
 
 .ls-empty {
   text-align: center;
@@ -110,13 +96,8 @@
   transition: background 0.2s;
 }
 
-.friends:hover {
-  background-color: #0b57a9;
-}
-
-.friends:hover span {
-  color: white;
-}
+.friends:hover { background-color: #0b57a9; }
+.friends:hover span { color: white; }
 
 .friends img {
   width: 50px;
@@ -126,11 +107,7 @@
   flex-shrink: 0;
 }
 
-.friends p {
-  font-size: 15px;
-  margin: 0;
-  font-weight: 500;
-}
+.friends p { font-size: 15px; margin: 0; font-weight: 500; }
 
 .friends .chat-info {
   flex: 1;
@@ -159,15 +136,8 @@
   border-left: 3px solid rgba(91, 150, 247, 0.5);
 }
 
-.friends.unread p {
-  font-weight: 700;
-  color: #fff;
-}
-
-.friends.unread span {
-  font-weight: 600;
-  color: #a8c4fb;
-}
+.friends.unread p { font-weight: 700; color: #fff; }
+.friends.unread span { font-weight: 600; color: #a8c4fb; }
 
 .unread-dot {
   width: 8px;
@@ -178,11 +148,7 @@
   align-self: center;
 }
 
-/* Menu */
-.ls-nav .menu {
-  position: relative;
-  padding: 10px 0px;
-}
+.ls-nav .menu { position: relative; padding: 10px 0px; }
 
 .menu .sub-menu {
   position: absolute;
@@ -197,23 +163,11 @@
   z-index: 10;
 }
 
-.sub-menu hr {
-  border: none;
-  height: 1px;
-  background: #a4a4a4;
-  margin: 8px 0px;
-}
+.sub-menu hr { border: none; height: 1px; background: #a4a4a4; margin: 8px 0px; }
+.sub-menu p { cursor: pointer; font-size: 14px; }
+.menu:hover .sub-menu { display: block; }
 
-.sub-menu p {
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.menu:hover .sub-menu {
-  display: block;
-}
-
-/* ✅ ADD FRIEND MODAL */
+/* Modal */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -222,6 +176,8 @@
   align-items: center;
   justify-content: center;
   z-index: 999;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .modal-box {
@@ -229,24 +185,16 @@
   border: 1px solid #1a3a7a;
   border-radius: 14px;
   padding: 28px 24px;
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
-.modal-box h3 {
-  color: #fff;
-  margin: 0;
-  font-size: 17px;
-}
-
-.modal-box .modal-subtitle {
-  color: #6a8cc7;
-  font-size: 12px;
-  margin: 0;
-}
+.modal-box h3 { color: #fff; margin: 0; font-size: 17px; }
+.modal-box .modal-subtitle { color: #6a8cc7; font-size: 12px; margin: 0; }
 
 .modal-email-row {
   display: flex;
@@ -263,11 +211,10 @@
   color: #fff;
   padding: 10px 14px;
   font-size: 13px;
+  min-width: 0;
 }
 
-.modal-email-row input::placeholder {
-  color: #4a6fa5;
-}
+.modal-email-row input::placeholder { color: #4a6fa5; }
 
 .modal-find-btn {
   background: #1a56db;
@@ -278,19 +225,12 @@
   font-size: 13px;
   font-weight: 600;
   transition: background 0.2s;
+  white-space: nowrap;
 }
 
-.modal-find-btn:hover {
-  background: #1446c0;
-}
+.modal-find-btn:hover { background: #1446c0; }
+.modal-find-btn:disabled { background: #0b2a5a; color: #4a6fa5; cursor: not-allowed; }
 
-.modal-find-btn:disabled {
-  background: #0b2a5a;
-  color: #4a6fa5;
-  cursor: not-allowed;
-}
-
-/* Found user preview card */
 .found-user-card {
   display: flex;
   align-items: center;
@@ -301,31 +241,11 @@
   border: 1px solid #1a56db;
 }
 
-.found-user-card img {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-}
+.found-user-card img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.found-user-card .found-user-info p:first-child { color: #fff; margin: 0; font-weight: 600; font-size: 14px; }
+.found-user-card .found-user-info p:last-child { color: #6a8cc7; margin: 0; font-size: 12px; }
 
-.found-user-card .found-user-info p:first-child {
-  color: #fff;
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.found-user-card .found-user-info p:last-child {
-  color: #6a8cc7;
-  margin: 0;
-  font-size: 12px;
-}
-
-/* Modal action buttons */
-.modal-actions {
-  display: flex;
-  gap: 10px;
-}
+.modal-actions { display: flex; gap: 10px; }
 
 .modal-cancel-btn {
   flex: 1;
@@ -339,10 +259,7 @@
   transition: border-color 0.2s;
 }
 
-.modal-cancel-btn:hover {
-  border-color: #5b96f7;
-  color: #fff;
-}
+.modal-cancel-btn:hover { border-color: #5b96f7; color: #fff; }
 
 .modal-add-btn {
   flex: 1;
@@ -357,12 +274,30 @@
   transition: background 0.2s;
 }
 
-.modal-add-btn:hover {
-  background: #1446c0;
+.modal-add-btn:hover { background: #1446c0; }
+.modal-add-btn:disabled { background: #0b2a5a; color: #4a6fa5; cursor: not-allowed; }
+
+/* ── TABLET ── */
+@media (max-width: 820px) {
+  .ls { height: 100vh; }
+  .ls-nav .logo { max-width: 110px; }
 }
 
-.modal-add-btn:disabled {
-  background: #0b2a5a;
-  color: #4a6fa5;
-  cursor: not-allowed;
+/* ── MOBILE ── */
+@media (max-width: 540px) {
+  .ls { height: 100vh; }
+
+  .ls-top { padding: 14px 16px; }
+
+  .ls-nav .logo { max-width: 100px; }
+
+  .ls-search { margin-top: 14px; padding: 8px 10px; }
+
+  .add-friend-btn { font-size: 12px; padding: 8px; margin-top: 10px; }
+
+  .friends { padding: 10px 14px; }
+
+  .friends img { width: 42px; height: 42px; }
+
+  .friends p { font-size: 14px; }
 }
